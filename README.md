@@ -12,7 +12,7 @@ Lees per opdracht goed door wat er moet gebeuren. Denk niet te ver na en hou je 
 2.	Open de solution en build het; weet zeker dat alles werkt.
 3.	Start de API en test de 2 methodes met Swagger
 
-## VOpdracht 1: Fix het met dependency injection
+## Opdracht 1: Fix het met dependency injection
 
 1.	Maak een interface voor CalculatePiService en koppel deze interface aan de betreffende service (CalculatePiService dus)
 2.	Pas de PiController aan zodat de nieuwe interface geinjecteerd wordt en gebruikt.
@@ -23,7 +23,7 @@ b.	In de controller PiController  wordt een private readonly verwacht van de int
 Bonus
 4.	Maak unit tests met de nieuwe implementatie.
 
-## VOpdracht 2: Bird sounds
+## Opdracht 2: Bird sounds
 
 1.	Bekijk de controller ‘BirdController’. Zoals je ziet returned elke action het geluid van een specifieke vogel. Dit is redelijk onhandig en de geluiden horen bij een vogel.
 2.	Maak een abstracte class ‘Bird’ in de business-laag.

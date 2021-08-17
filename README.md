@@ -43,15 +43,12 @@ In de MovieService zit een methode om een movie per ID op te halen. Er moet een 
 5.	Voeg een nieuwe action aan waarmee men een movie kan ophalen aan de hand van de naam.
 
 ## Bonus opdracht: 
-Je hoeft de onderstaande opdrachten niet op volgorde te doen. Als je opdracht 2 liever eerst doet, dan is dat prima.
+Heb je de bovenstaande opdrachten af? Kijk dan eens naar de volgende opdracht. Iets ingewikkelder en minder informatie. Gebruik voornamelijk Google om de antwoorden te vinden.
 
-### Opdracht 1:
 
 1.	Maak een repository aan met entity framework
 2.	Zorg ervoor dat Movie-class in de database komt met movies
 3.	Injecteer de repository in de MovieService en maak de methodes werkend
 4.	Maak unit tests op de MovieService met de repository
-
-### Opdracht 2:
 
 

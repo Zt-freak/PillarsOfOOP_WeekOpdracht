@@ -1670,6 +1670,16 @@
         "build": {
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
+      },
+      "WeekOpdrachtDependencyInjection.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/WeekOpdrachtDependencyInjection.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WeekOpdrachtDependencyInjection.Business.dll": {}
+        }
       }
     }
   },
@@ -5906,11 +5916,17 @@
         "xunit.runner.visualstudio.2.4.3.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "WeekOpdrachtDependencyInjection.Business/1.0.0": {
+      "type": "project",
+      "path": "../WeekOpdrachtDependencyInjection.Business/WeekOpdrachtDependencyInjection.Business.csproj",
+      "msbuildProject": "../WeekOpdrachtDependencyInjection.Business/WeekOpdrachtDependencyInjection.Business.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Microsoft.NET.Test.Sdk >= 16.9.4",
+      "WeekOpdrachtDependencyInjection.Business >= 1.0.0",
       "coverlet.collector >= 3.0.2",
       "xunit >= 2.4.1",
       "xunit.runner.visualstudio >= 2.4.3"
@@ -5947,7 +5963,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\bnkho\\source\\repos\\PillarsOfOOP_WeekOpdracht\\WeekOpdrachtDependencyInjection.Business\\WeekOpdrachtDependencyInjection.Business.csproj": {
+              "projectPath": "C:\\Users\\bnkho\\source\\repos\\PillarsOfOOP_WeekOpdracht\\WeekOpdrachtDependencyInjection.Business\\WeekOpdrachtDependencyInjection.Business.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

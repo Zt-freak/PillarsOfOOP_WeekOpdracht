@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace WeekOpdrachtDependencyInjection.Business.Interfaces
 {
-    interface ICalculatePiService
+    public interface ICalculatePiService
     {
+        public double Add(int number);
+        public double Minus(int number);
     }
 }

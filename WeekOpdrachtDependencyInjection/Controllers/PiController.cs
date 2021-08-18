@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WeekOpdrachtDependencyInjection.Business;
+using WeekOpdrachtDependencyInjection.Business.Interfaces;
 
 namespace WeekOpdrachtDependencyInjection.Controllers
 {
@@ -7,22 +8,20 @@ namespace WeekOpdrachtDependencyInjection.Controllers
     [ApiController]
     public class PiController : ControllerBase
     {
-        private readonly string a;
+        private readonly ICalculatePiService _calculatePiService;
 
-        public PiController(string a)
+        public PiController(ICalculatePiService calculatePiService)
         {
-            this.a = a;
+            _calculatePiService = calculatePiService;
         }
 
         [HttpGet]
         [Route("add/{number}")]
         public IActionResult Add(int number)
         {
-            var calculatePiService = new CalculatePiService();
-
             return Ok(new
             {
-                result = (calculatePiService.Add(number))
+                result = (_calculatePiService.Add(number))
             });
         }
 
@@ -30,11 +29,9 @@ namespace WeekOpdrachtDependencyInjection.Controllers
         [Route("minus/{number}")]
         public IActionResult Minus(int number)
         {
-            var calculatePiService = new CalculatePiService();
-
             return Ok(new
             {
-                result = (calculatePiService.Minus(number))
+                result = (_calculatePiService.Minus(number))
             });
         }
     }

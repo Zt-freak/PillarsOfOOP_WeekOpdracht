@@ -1,8 +1,9 @@
 ﻿using System;
+using WeekOpdrachtDependencyInjection.Business.Interfaces;
 
 namespace WeekOpdrachtDependencyInjection.Business
 {
-    public class CalculatePiService
+    public class CalculatePiService : ICalculatePiService
     {
         public double Add(int number)
         {

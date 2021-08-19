@@ -18,5 +18,10 @@ namespace WeekOpdrachtDependencyInjection.Business
         {
             return Movies.Single(x=>x.Id == id);
         }
+
+        public Movie GetByName(string name)
+        {
+            return Movies.Single(x => x.Title == name);
+        }
     }
 }

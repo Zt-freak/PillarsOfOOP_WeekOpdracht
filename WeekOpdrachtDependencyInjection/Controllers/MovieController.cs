@@ -15,10 +15,18 @@ namespace WeekOpdrachtDependencyInjection.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
-        public IActionResult GetById(int id)
+        [Route("id/{id}")]
+        public IActionResult Get(int id)
         {
             var movie = movieService.GetById(id);
+            return Ok(movie);
+        }
+
+        [HttpGet]
+        [Route("name/{name}")]
+        public IActionResult Get(string name)
+        {
+            var movie = movieService.GetByName(name);
             return Ok(movie);
         }
     }

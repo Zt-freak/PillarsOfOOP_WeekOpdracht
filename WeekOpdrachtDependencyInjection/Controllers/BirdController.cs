@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WeekOpdrachtDependencyInjection.Business.Entities;
+using WeekOpdrachtDependencyInjection.Business.Interfaces;
 
 namespace WeekOpdrachtDependencyInjection.Controllers
 {
@@ -7,25 +8,23 @@ namespace WeekOpdrachtDependencyInjection.Controllers
     [ApiController]
     public class BirdController : ControllerBase
     {
-        [HttpGet]
-        [Route("duck")]
-        public IActionResult Duck()
+        private readonly IBirdService _birdService;
+        public BirdController (IBirdService birdService)
         {
-            return Ok(new Duck().Sound());
+            _birdService = birdService;
         }
-
         [HttpGet]
-        [Route("goose")]
-        public IActionResult Goose()
+        [Route("{birdname}")]
+        public IActionResult GetBirdSound(string birdname)
         {
-            return Ok(new Goose().Sound());
-        }
-
-        [HttpGet]
-        [Route("chicken")]
-        public IActionResult Chicken()
-        {
-            return Ok(new Chicken().Sound());
+            try
+            {
+                return Ok(_birdService.GetBirdByType(birdname).Sound());
+            }
+            catch (System.Exception)
+            {
+                return BadRequest();
+            }
         }
     }
 }

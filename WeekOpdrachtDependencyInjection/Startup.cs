@@ -34,6 +34,12 @@ namespace WeekOpdrachtDependencyInjection
 
             services.AddScoped<ICalculatePiService, CalculatePiService>();
 
+            services
+                .AddScoped<IBird, Chicken>()
+                .AddScoped<IBird, Duck>()
+                .AddScoped<IBird, Goose>()
+                .AddScoped<IBirdService, BirdService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeekOpdrachtDependencyInjection", Version = "v1" });

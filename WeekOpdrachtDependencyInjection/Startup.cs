@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,8 +13,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WeekOpdrachtDependencyInjection.Business;
+using WeekOpdrachtDependencyInjection.Business.Context;
 using WeekOpdrachtDependencyInjection.Business.Entities;
 using WeekOpdrachtDependencyInjection.Business.Interfaces;
+using WeekOpdrachtDependencyInjection.Business.Repositories;
 
 namespace WeekOpdrachtDependencyInjection
 {
@@ -33,12 +36,19 @@ namespace WeekOpdrachtDependencyInjection
             services.AddControllers();
 
             services.AddScoped<ICalculatePiService, CalculatePiService>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
 
             services
                 .AddScoped<IBird, Chicken>()
                 .AddScoped<IBird, Duck>()
                 .AddScoped<IBird, Goose>()
                 .AddScoped<IBirdService, BirdService>();
+
+            services.AddDbContext<MoviesContext>(
+                options => options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")
+                )
+            );
 
             services.AddSwaggerGen(c =>
             {

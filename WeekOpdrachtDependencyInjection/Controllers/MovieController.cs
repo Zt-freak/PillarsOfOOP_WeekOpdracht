@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WeekOpdrachtDependencyInjection.Business;
+using WeekOpdrachtDependencyInjection.Business.Interfaces;
+using WeekOpdrachtDependencyInjection.Business.Repositories;
 
 namespace WeekOpdrachtDependencyInjection.Controllers
 {
@@ -8,10 +10,12 @@ namespace WeekOpdrachtDependencyInjection.Controllers
     public class MovieController : ControllerBase
     {
         private readonly MovieService movieService;
+        private readonly IMovieRepository _repository;
 
-        public MovieController()
+        public MovieController(IMovieRepository repository)
         {
-            movieService = new MovieService();
+            _repository = repository;
+            movieService = new MovieService(_repository);
         }
 
         [HttpGet]
@@ -28,6 +32,14 @@ namespace WeekOpdrachtDependencyInjection.Controllers
         {
             var movie = movieService.GetByName(name);
             return Ok(movie);
+        }
+
+        [HttpGet]
+        [Route("seed")]
+        public IActionResult Seed()
+        {
+            movieService.SeedDatabase();
+            return Ok();
         }
     }
 }

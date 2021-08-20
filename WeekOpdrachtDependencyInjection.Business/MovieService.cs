@@ -2,26 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using WeekOpdrachtDependencyInjection.Business.Entities;
+using WeekOpdrachtDependencyInjection.Business.Interfaces;
+using WeekOpdrachtDependencyInjection.Business.Repositories;
 
 namespace WeekOpdrachtDependencyInjection.Business
 {
     public class MovieService
     {
-        public List<Movie> Movies = new List<Movie>
+        private readonly IMovieRepository _repository;
+        public MovieService(IMovieRepository repository)
         {
-            new Movie { Id = 1, Title = "Jaws", ReleaseDate = new DateTime(1975,1,1)},
-            new Movie { Id = 2, Title = "Luca", ReleaseDate = new DateTime(2021,1,1)},
-            new Movie { Id = 3, Title = "Kill Bill", ReleaseDate = new DateTime(2003,1,1)},
-        };
-
-        public Movie GetById(int id)
-        {
-            return Movies.Single(x=>x.Id == id);
+            _repository = repository;
         }
 
-        public Movie GetByName(string name)
+        public IMovie GetById(int id)
         {
-            return Movies.Single(x => x.Title == name);
+            return _repository.GetById(id);
+        }
+
+        public IMovie GetByName(string name)
+        {
+            return _repository.GetByName(name);
+        }
+
+        public void SeedDatabase()
+        {
+            if (_repository.GetAll().ToList().Count == 0)
+            {
+                _repository.Add(new Movie { Title = "Jaws", ReleaseDate = new DateTime(1975, 1, 1) });
+                _repository.Add(new Movie { Title = "Luca", ReleaseDate = new DateTime(2021, 1, 1)});
+                _repository.Add(new Movie { Title = "Kill Bill", ReleaseDate = new DateTime(2003, 1, 1) });
+            }
         }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System;
+using WeekOpdrachtDependencyInjection.Business.Interfaces;
 
 namespace WeekOpdrachtDependencyInjection.Business.Entities
 {
-    public class Movie
+    public class Movie : IMovie
     {
         public int Id { get; set; }
         public string Title {  get; set; }
